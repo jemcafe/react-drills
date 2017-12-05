@@ -10,14 +10,16 @@ class App extends Component {
     }
   }
 
-  
-
-  render() {
+  render () {
     const { items } = this.state
+    
+    let list = items.map( (e, i) => {
+      return (<h2 key={i}> {e} </h2>);
+    })
 
     return (
       <div className="App">
-        <h2>{ items }</h2>
+        { list }
       </div>
     );
   }
