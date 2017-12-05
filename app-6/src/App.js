@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state = {
       userInput: '',
-      tasks: [],
+      list: [],
     }
   }
 
@@ -17,9 +17,9 @@ class App extends Component {
   }
 
   addTask ( arr, userInput ) {
-    let newArray = arr;
+    let newArr = arr;
     newArr.push(userInput);
-    this.setState({ tasks: newArray });
+    this.setState({ userInput: '' , list: newArr});
   }
 
   render() {
@@ -28,8 +28,8 @@ class App extends Component {
       <div className="App">
         <h1>My to-do list:</h1>
         <input className="text-box" onChange={(e) => { this.handleChange(e.target.value) }}/>
-        <button onClick={() => { this.addTask(this.state.tasks, this.state.userInput) }}>Add</button>
-        <Todo tasks={this.state.tasks} />
+        <button onClick={() => { this.addTask(this.state.list, this.state.userInput) }}>Add</button>
+        <Todo tasks={this.state.list} />
       </div>
     );
   }
