@@ -3,16 +3,35 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor () {
+    super()
+    this.state = {
+      list: [],
+      input: ''
+    }
+    this.addTask = this.addTask.bind(this)
+  }
+
+  handleInput ( val ) {
+    // sets input to the users input
+    this.setState({ input: val })
+  }
+
+  addTask ( val ) {
+    //adds task to the list
+    this.setState({
+      list: [...this.state.list, val],
+      input: ''
+    });
+  }
+
   render() {
+    const { userInput } = this.state;
+
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h4 className="title">My Todo List:</h4>
+        <input className="text-box" onChange={(e) => this.handleChange(e.target.value)}/>
       </div>
     );
   }
